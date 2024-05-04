@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this displays the PID of the processes with the word 'bash'
+#shellcheck disable=SC2009
+ps -u "$USER" | awk '/bash/{print}'
