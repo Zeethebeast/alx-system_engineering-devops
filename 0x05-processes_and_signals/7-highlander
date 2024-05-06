@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#this prints texts until it gets killed
+
+while true;
+do
+	echo "To infinity and beyond"
+	sleep 2
+	echo "I am invincible!!!"
+done
