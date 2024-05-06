@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#this dsiplays a message indefinitely untill it gets interrupted
+
+while true;do
+	echo "To infinitely and beyond"
+	sleep 2
+done
