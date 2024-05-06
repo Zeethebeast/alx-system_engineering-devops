@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this kills 4-to_inifinity_and_beyond
+
+pkill --signal SIGTERM -f "4-to_infinity_and_beyond"
