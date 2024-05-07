@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this stops 4-to_infinity_and_beyond
+
+pkill --signal SIGTERM -f "7-highlander"
