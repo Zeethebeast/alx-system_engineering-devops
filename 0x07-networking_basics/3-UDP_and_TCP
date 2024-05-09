@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This asks a question on TCP and UDP
+echo "1"
+echo "2"
+echo "1"

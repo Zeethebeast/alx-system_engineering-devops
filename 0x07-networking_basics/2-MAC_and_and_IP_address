@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This asks a question on MAC and IP addresses 
+echo "2"
+echo "1"
