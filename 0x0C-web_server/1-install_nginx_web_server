@@ -12,7 +12,7 @@ sudo service nginx start
 sudo service nginx enable
 
 # Create or overwrite index.html with "HELLO WORLD!"
-echo "HELLO WORLD!" | sudo tee /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Check Nginx service status
 sudo service nginx status
