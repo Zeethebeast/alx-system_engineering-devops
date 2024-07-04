@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Update package lists
+sudo apt-get update
+
+# Install Nginx if not already installed
+sudo apt-get install -y nginx
+
+# Start Nginx service
+sudo service nginx start
+
+# Enable Nginx to start on boot
+sudo systemctl enable nginx
+
+# Create or overwrite index.html with "HELLO WORLD!"
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Configure Nginx for the redirection
+cat <<EOL | sudo tee /etc/nginx/sites-available/default
+server {
+    listen 80;
+
+    server_name _;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}
+EOL
+
+# Restart Nginx to apply the changes
+sudo systemctl restart nginx
+
+# Check Nginx service status
+sudo service nginx status
+
