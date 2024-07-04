@@ -1,40 +1,8 @@
 #!/usr/bin/env bash
+#In this first task you need to configure web-02 to be identical
 
-# Update package lists
-sudo apt-get update
+redirect_string='return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;'
 
-# Install Nginx if not already installed
-sudo apt-get install -y nginx
+sudo sed -i '/server_name _;/a \\tlocation /redirect_me {\n\t\t'"$redirect_string"'\n\t}' /etc/nginx/sites-available/default
 
-# Start Nginx service
-sudo service nginx start
-
-# Enable Nginx to start on boot
-sudo systemctl enable nginx
-
-# Create or overwrite index.html with "HELLO WORLD!"
-echo "Hello World!" | sudo tee /var/www/html/index.html
-
-# Configure Nginx for the redirection
-cat <<EOL | sudo tee /etc/nginx/sites-available/default
-server {
-    listen 80;
-
-    server_name _;
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-EOL
-
-# Restart Nginx to apply the changes
-sudo systemctl restart nginx
-
-# Check Nginx service status
-sudo service nginx status
-
+sudo service nginx restart

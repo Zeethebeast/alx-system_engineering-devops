@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Path to custom 404 page
+custom_page="/var/www/html/404.html"
+
+# Check if the custom 404 page exists; create it if not
+if [ ! -f "$custom_page" ]; then
+    echo -e "Ceci n'est pas une page \n" | sudo tee "$custom_page"
+    if [ $? -ne 0 ]; then
+        echo "Failed to create $custom_page. Exiting."
+        exit 1
+    fi
+fi
+
+# Add Nginx configuration for custom 404 error page
+sudo sed -i '/server_name _;/a \    error_page 404 /404.html;\n    location = /404.html {\n        root /var/www/html;\n        internal;\n    }' /etc/nginx/sites-available/default
+
+# Check Nginx configuration syntax
+sudo nginx -t
+if [ $? -ne 0 ]; then
+    echo "Nginx configuration test failed. Check syntax."
+    exit 1
+fi
+
+# Restart Nginx to apply changes
+sudo systemctl restart nginx
+
+# Check Nginx service status
+sudo systemctl status nginx
+
