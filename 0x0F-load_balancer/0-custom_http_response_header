@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Update package lists
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get install -y nginx
+
+# Start Nginx service
+sudo service nginx start
+
+# Enable Nginx to start on boot
+sudo systemctl enable nginx
+
+# Create or overwrite index.html with "HELLO WORLD!"
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Create custom 404 error page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# Add redirect rule to Nginx default server block
+sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+
+# Add custom 404 error page to Nginx default server block
+sudo sed -i "/listen 80 default_server;/a error_page 404 /404.html;" /etc/nginx/sites-available/default
+
+# Add custom header to Nginx configuration
+sudo sed -i '14a \\tadd_header X-Served-By '"${HOSTNAME}"';' /etc/nginx/nginx.conf
+
+# Restart Nginx to apply changes
+sudo service nginx restart
+
+# Check Nginx service status
+sudo service nginx status
