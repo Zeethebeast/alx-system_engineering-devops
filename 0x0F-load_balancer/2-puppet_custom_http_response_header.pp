@@ -1,4 +1,4 @@
-# edit_nginx.pp
+# nginx_setup.pp
 node default {
   # Ensure the necessary package and service management resources
   package { 'nginx':
@@ -48,5 +48,12 @@ node default {
     line  => "    add_header X-Served-By ${hostname};",
     after => 'http {',
     require => Package['nginx'],
+  }
+
+  # Restart Nginx to apply changes
+  exec { 'restart_nginx':
+    command     => '/usr/sbin/service nginx restart',
+    refreshonly => true,
+    subscribe   => [ File_line['add_redirect_rule'], File_line['add_custom_404_page'], File_line['add_custom_header'] ],
   }
 }
