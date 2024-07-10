@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Start the Docker container
+docker run -d -p 8080:80 --name my_container holbertonschool/265-0
+
+# Execute commands inside the container to install Apache, create the index.html file, and start Apache
+docker exec -it my_container /bin/bash -c "
+  apt-get update && \
+  apt-get install -y apache2 && \
+  echo 'Hello Holberton' > /var/www/html/index.html && \
+  service apache2 start
+"
+
+# Verify if everything is working correctly
+curl 0:8080
