@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Run software as another user
+
+#var="$(id -u "$1" &>/dev/null)"
+
+if [ $# -ne 1 ]; then
+	echo "USAGE: ./programname <username>"
+	exit 1
+fi
+if id "$1" &>/dev/null; then
+	sudo -u "$1" whoami
+else
+	echo "user does not exits"
+	exit 1
+fi
