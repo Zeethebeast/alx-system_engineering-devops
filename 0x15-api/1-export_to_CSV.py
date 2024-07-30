@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Fetches and exports TODO tasks for a specified user from JSONPlaceholder API to a CSV file.
 """
