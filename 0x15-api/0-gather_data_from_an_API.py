@@ -2,9 +2,8 @@
 """
 Fetches and prints completed TODO tasks for a specified user from JSONPlaceholder API.
 """
-
-import sys
 import requests
+import sys
 
 def main():
     """Fetch and print TODO tasks for the specified user."""
