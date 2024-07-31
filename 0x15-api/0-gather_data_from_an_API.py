@@ -33,8 +33,9 @@ def main():
 
     # Print employee's completed tasks
     print(
-        f"Employee {user_name} is done with tasks"
-        "({num_completed}/{num_total}):"
+        "Employee {} is done with tasks({}/{}):".format(
+         user_name, num_completed, num_total
+        )
         )
     for todo in completed_tasks:
         print(f"\t{todo['title']}")
