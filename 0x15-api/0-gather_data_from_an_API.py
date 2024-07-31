@@ -38,7 +38,7 @@ def main():
         )
         )
     for todo in completed_tasks:
-        print(f"\t{todo['title']}")
+        print(f"\t {todo['title']}")
 
 
 if __name__ == "__main__":
