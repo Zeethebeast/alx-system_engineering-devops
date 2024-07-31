@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""
-Fetches and prints completed TODO tasks for a specified user from JSONPlaceholder API.
-"""
+"""Fetches and prints completed todo tasks for a specified
+user from JSONPlaceholder API."""
 import requests
 import sys
 
+
 def main():
-    """Fetch and print TODO tasks for the specified user."""
+    """Fetch and print todo tasks for the specified user."""
     # Check if an argument was provided
     if len(sys.argv) != 2:
         print("Usage: python3 0-gather_data_from_an_API.py <user_id>")
@@ -32,10 +32,13 @@ def main():
     num_total = len(todos)
 
     # Print employee's completed tasks
-    print(f"Employee {user_name} is done with tasks({num_completed}/{num_total}):")
+    print(
+        f"Employee {user_name} is done with tasks"
+        "({num_completed}/{num_total}):"
+        )
     for todo in completed_tasks:
-        print(f"\t {todo['title']}")
+        print(f"\t{todo['title']}")
+
 
 if __name__ == "__main__":
     main()
-
