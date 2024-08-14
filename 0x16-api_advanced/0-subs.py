@@ -3,6 +3,8 @@
 Function that queries the Reddit API and returns
 the number of subscribers for a given subreddit.
 """
+
+import json
 import requests
 import sys
 
