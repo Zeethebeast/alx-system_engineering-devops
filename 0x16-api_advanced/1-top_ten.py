@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import requests
-
-
 """
 Gives limit of top ten titles of any subreddit
 """
+
+
+import json
+import requests
 
 
 def top_ten(subreddit):
