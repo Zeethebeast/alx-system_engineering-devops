@@ -6,15 +6,16 @@ the number of subscribers for a given subreddit.
 
 import json
 import requests
-import sys
+
 
 
 def number_of_subscribers(subreddit):
     """ Queries to Reddit API """
-    u_agent = 'Mozilla/5.0'
+    #u_agent = 'Mozilla/5.0'
 
     headers = {
-        'User-Agent': u_agent
+        'User-Agent': 'myRedditAp/0.0.1'
+        #'User-Agent': u_agent
     }
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
