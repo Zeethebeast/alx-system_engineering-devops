@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 import requests
+
+
 """
 Gives limit of top ten titles of any subreddit
 """
+
 
 def top_ten(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"

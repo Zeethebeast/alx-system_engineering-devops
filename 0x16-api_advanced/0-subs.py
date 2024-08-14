@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 import requests
+
+
 """
 this script uses Reddit API to give
 the number of subscribers 
 in Programming Subreddit
 """
+
 
 def number_of_subscribers(subreddit):
     headers = {
